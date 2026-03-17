@@ -1,19 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController; // Importar el controlador
 
-Route::get('/', function () {
-    return view('inicio');
-});
+// Usamos el controlador para la ruta principal
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/oferta', function () {
-    return view('oferta');
-});
-
-Route::get('/investigacion', function () {
-    return view('investigacion');
-});
-
-Route::get('/vinculacion', function () {
-    return view('vinculacion');
-});
+Route::get('/oferta', function () { return view('oferta'); });

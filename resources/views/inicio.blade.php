@@ -3,48 +3,94 @@
 @section('titulo', 'Inicio')
 
 @section('contenido')
+@php
+    $slidesHero = [
+        [
+            'eyebrow' => 'Facultad de Contaduria y Administracion',
+            'h1' => 'Desarrolla tu',
+            'h2' => 'potencial al maximo',
+            'h3' => 'Formacion universitaria con vision global, liderazgo y compromiso social.',
+            'subtitle' => 'En la FCA UADY impulsamos una comunidad academica que integra conocimiento, innovacion y experiencias que preparan para los retos del entorno profesional.',
+            'image' => asset('images/fca/fca-principal.jpg'),
+            'image_alt' => 'Instalaciones de la Facultad de Contaduria y Administracion de la UADY',
+            'image_position' => 'center center',
+            'primary' => [
+                'label' => 'Ver',
+                'href' => '/oferta',
+            ],
+            'secondary' => [
+                'label' => 'Conoce la vida estudiantil',
+                'href' => '#vida-estudiantil',
+            ],
+        ],
+        [
+            'eyebrow' => 'Excelencia Academica',
+            'h1' => 'Programas que',
+            'h2' => 'fortalecen tu futuro',
+            'h3' => 'Aprendizaje riguroso, acompanamiento docente y vinculacion con el entorno.',
+            'subtitle' => 'Nuestra oferta educativa promueve el pensamiento estrategico, la toma de decisiones y la preparacion profesional en un contexto universitario de calidad.',
+            'image' => asset('images/fca/fca-simposio.jpg'),
+            'image_alt' => 'Actividad academica de la FCA UADY',
+            'image_position' => 'center center',
+            'primary' => [
+                'label' => 'Ver',
+                'href' => '/oferta',
+            ],
+            'secondary' => [
+                'label' => 'Conoce la vida estudiantil',
+                'href' => '#vida-estudiantil',
+            ],
+        ],
+        [
+            'eyebrow' => 'Vida Universitaria',
+            'h1' => 'Una comunidad',
+            'h2' => 'que inspira y participa',
+            'h3' => 'Espacios para aprender, convivir y crecer dentro y fuera del aula.',
+            'subtitle' => 'La experiencia estudiantil en la FCA UADY se vive a traves de actividades, proyectos y entornos que fortalecen la identidad universitaria.',
+            'image' => asset('images/fca/fca-maf.jpg'),
+            'image_alt' => 'Vinculacion y servicios de la FCA UADY',
+            'image_position' => 'center center',
+            'primary' => [
+                'label' => 'Ver',
+                'href' => '/oferta',
+            ],
+            'secondary' => [
+                'label' => 'Conoce la vida estudiantil',
+                'href' => '#vida-estudiantil',
+            ],
+        ],
+    ];
+@endphp
 
-<div class="relative h-[85vh] bg-[#001530] flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#002f6c] via-[#002f6c]/80 to-[#001530]/60 z-10"></div>
-    
-    
-    <div class="relative z-20 px-6 max-w-5xl mx-auto w-full text-left md:text-center mt-16">
-        <span class="text-yellow-400 font-bold tracking-[0.2em] uppercase text-sm mb-6 block drop-shadow-md">Liderazgo y Emprendimiento</span>
-        <h2 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
-            Desarrolla tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 drop-shadow">potencial</span> al máximo.
-        </h2>
-        <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light max-w-3xl mx-auto">
-            Impulsamos el talento para transformar el mundo de los negocios con visión global e innovación académica.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/oferta" class="bg-yellow-500 text-[#002f6c] font-bold py-4 px-10 rounded-full shadow-lg hover:bg-yellow-400 hover:scale-105 transition-all text-sm uppercase tracking-wide text-center">
-                Conoce los programas
-            </a>
-            <a href="/vinculacion" class="border border-yellow-500 text-yellow-500 font-bold py-4 px-10 rounded-full hover:bg-yellow-500 hover:text-[#002f6c] transition-all text-sm uppercase tracking-wide text-center">
-                Vida Estudiantil
-            </a>
-        </div>
-    </div>
-</div>
+<x-galeria :slides="$slidesHero" altura="h-[85vh] min-h-[720px] sm:min-h-[680px]" />
 
-<div class="container mx-auto px-6 py-24 bg-gray-50">
+<div id="noticias" class="container mx-auto px-6 py-24 bg-gray-50">
     <div class="mb-16 md:text-center">
         <h2 class="text-4xl font-extrabold text-[#002f6c] tracking-tight">Noticias Destacadas</h2>
-        <div class="w-24 h-1 bg-yellow-500 mt-6 md:mx-auto"></div>
+        <div class="mt-6 h-1 w-24 bg-yellow-500 md:mx-auto"></div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         @forelse($noticias as $noticia)
-            <x-noticia 
+            <x-noticia
                 titulo="{{ $noticia->titulo }}"
                 fecha="{{ $noticia->created_at ? $noticia->created_at->format('d M Y') : 'Reciente' }}"
                 imagen="{{ $noticia->imagen }}"
                 contenido="{{ $noticia->contenido }}"
             />
         @empty
-            <p class="text-gray-500 col-span-4 text-center py-8">No hay noticias publicadas en este momento.</p>
+            <p class="col-span-4 py-8 text-center text-gray-500">No hay noticias publicadas en este momento.</p>
         @endforelse
     </div>
 </div>
 
+<section id="vida-estudiantil" class="bg-white px-6 py-20">
+    <div class="mx-auto max-w-5xl rounded-[2rem] bg-gradient-to-r from-[#002f6c] to-[#001530] p-10 text-white shadow-2xl">
+        <p class="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-yellow-400">Vida Estudiantil</p>
+        <h2 class="text-3xl font-extrabold md:text-4xl">Una comunidad que aprende, participa y transforma.</h2>
+        <p class="mt-5 max-w-3xl text-lg font-light leading-8 text-slate-200">
+            En la FCA UADY, la formacion universitaria se complementa con actividades academicas, culturales y de integracion que fortalecen el desarrollo integral del estudiantado.
+        </p>
+    </div>
+</section>
 @endsection

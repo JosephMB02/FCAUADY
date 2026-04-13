@@ -2,11 +2,13 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic test example.
      */
@@ -15,5 +17,14 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+    }
+
+    public function test_unknown_urls_show_the_formatted_not_found_page(): void
+    {
+        $response = $this->get('/ruta-inexistente');
+
+        $response
+            ->assertStatus(404)
+            ->assertSee('Pagina no encontrada');
     }
 }

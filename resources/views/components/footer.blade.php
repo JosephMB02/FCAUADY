@@ -14,9 +14,11 @@
         <div>
             <h4 class="mb-4 text-sm font-bold uppercase tracking-wider text-yellow-500">Enlaces Rapidos</h4>
             <ul class="space-y-3 text-sm font-light">
+                <li><a href="/nuestra-facultad" class="inline-block transition-transform hover:translate-x-1 hover:text-white">Nuestra Facultad</a></li>
                 <li><a href="/oferta" class="inline-block transition-transform hover:translate-x-1 hover:text-white">Oferta Educativa</a></li>
-                <li><a href="/#noticias" class="inline-block transition-transform hover:translate-x-1 hover:text-white">Noticias</a></li>
-                <li><a href="/#vida-estudiantil" class="inline-block transition-transform hover:translate-x-1 hover:text-white">Vida Estudiantil</a></li>
+                <li><a href="/aspirantes" class="inline-block transition-transform hover:translate-x-1 hover:text-white">Aspirantes</a></li>
+                <li><a href="/estudiantes" class="inline-block transition-transform hover:translate-x-1 hover:text-white">Estudiantes</a></li>
+                <li><a href="/egresados" class="inline-block transition-transform hover:translate-x-1 hover:text-white">Egresados</a></li>
             </ul>
         </div>
 

@@ -1,9 +1,14 @@
 @php
     $links = [
-        ['label' => 'Inicio', 'href' => '/', 'active' => request()->is('/')],
-        ['label' => 'Oferta Educativa', 'href' => '/oferta', 'active' => request()->is('oferta')],
-        ['label' => 'Noticias', 'href' => '/#noticias', 'active' => false],
-        ['label' => 'Vida Estudiantil', 'href' => '/#vida-estudiantil', 'active' => false],
+        ['label' => 'Inicio', 'href' => route('home'), 'active' => request()->routeIs('home')],
+        ['label' => 'Nuestra Facultad', 'href' => route('nuestra-facultad'), 'active' => request()->routeIs('nuestra-facultad')],
+        ['label' => 'Oferta Educativa', 'href' => route('oferta'), 'active' => request()->routeIs('oferta')],
+        ['label' => 'Aspirantes', 'href' => route('aspirantes'), 'active' => request()->routeIs('aspirantes')],
+        ['label' => 'Estudiantes', 'href' => route('estudiantes'), 'active' => request()->routeIs('estudiantes')],
+        ['label' => 'Investigacion', 'href' => route('investigacion'), 'active' => request()->routeIs('investigacion')],
+        ['label' => 'Vinculacion', 'href' => route('vinculacion'), 'active' => request()->routeIs('vinculacion')],
+        ['label' => 'Internacionalizacion', 'href' => route('internacionalizacion'), 'active' => request()->routeIs('internacionalizacion')],
+        ['label' => 'Egresados', 'href' => route('egresados'), 'active' => request()->routeIs('egresados')],
     ];
 @endphp
 
@@ -22,7 +27,7 @@
             </h1>
         </a>
 
-        <nav class="flex flex-wrap items-center gap-3 text-sm font-semibold text-[#002f6c] md:justify-end md:gap-8">
+        <nav class="flex flex-wrap items-center gap-3 text-sm font-semibold text-[#002f6c] md:max-w-[70%] md:justify-end md:gap-4">
             @foreach ($links as $link)
                 <a
                     href="{{ $link['href'] }}"

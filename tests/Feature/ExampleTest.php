@@ -27,4 +27,14 @@ class ExampleTest extends TestCase
             ->assertStatus(404)
             ->assertSee('Pagina no encontrada');
     }
+
+    public function test_secondary_pages_render_successfully(): void
+    {
+        $response = $this->get('/aspirantes');
+
+        $response
+            ->assertStatus(200)
+            ->assertSee('Aspirantes')
+            ->assertSee('Da el siguiente paso');
+    }
 }

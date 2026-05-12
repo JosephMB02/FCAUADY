@@ -94,7 +94,7 @@
 
         <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             @foreach ($indicadores as $indicador)
-                <x-stat-card :value="$indicador['value']" :label="$indicador['label']" />
+                <x-stat-card :value="$indicador['value']" :label="$indicador['label']" class="{{ $indicador['class'] }}" />
             @endforeach
         </div>
     </div>
@@ -125,7 +125,7 @@
     </div>
 </section>
 
-<div id="noticias" class="container mx-auto px-6 py-24 bg-gray-50">
+<div id="noticias" class="container mx-auto bg-gray-50 px-6 py-24">
     <div class="mb-16 md:text-center">
         <p class="text-sm font-bold uppercase tracking-[0.25em] text-yellow-600">Actualidad</p>
         <h2 class="mt-4 text-4xl font-extrabold tracking-tight text-[#002f6c]">Noticias destacadas</h2>

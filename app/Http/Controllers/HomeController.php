@@ -39,10 +39,10 @@ class HomeController extends Controller
         ];
 
         $indicadores = [
-            ['value' => 'Formacion integral', 'label' => 'Trayectoria academica y profesional'],
-            ['value' => 'Vida universitaria', 'label' => 'Experiencias que fortalecen la comunidad'],
-            ['value' => 'Vinculacion activa', 'label' => 'Relacion con el entorno y los sectores'],
-            ['value' => 'Vision global', 'label' => 'Internacionalizacion y colaboracion academica'],
+            ['value' => 'Formacion integral', 'label' => 'Trayectoria academica y profesional', 'class' => 'border-yellow-300/40 bg-yellow-400/20'],
+            ['value' => 'Vida universitaria', 'label' => 'Experiencias que fortalecen la comunidad', 'class' => 'border-sky-300/40 bg-sky-400/20'],
+            ['value' => 'Vinculacion activa', 'label' => 'Relacion con el entorno y los sectores', 'class' => 'border-emerald-300/40 bg-emerald-400/20'],
+            ['value' => 'Vision global', 'label' => 'Internacionalizacion y colaboracion academica', 'class' => 'border-rose-300/40 bg-rose-400/20'],
         ];
 
         $programas = [

@@ -18,6 +18,17 @@
             <div class="container mx-auto">
                 <p class="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-yellow-400">FCA UADY</p>
                 <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">@yield('titulo')</h1>
+                @isset($heroSlides)
+                    <x-image-carousel :slides="$heroSlides" />
+                @endisset
+                @isset($heroImage)
+                    <img
+                        src="{{ asset($heroImage['src']) }}"
+                        alt="{{ $heroImage['alt'] }}"
+                        class="mt-8 h-96 w-full max-w-6xl rounded-[1.5rem] object-cover shadow-2xl ring-1 ring-white/15 md:h-[30rem]"
+                        style="object-position: {{ $heroImage['position'] ?? 'center 45%' }};"
+                    >
+                @endisset
                 @hasSection('descripcion')
                     <p class="mt-5 max-w-3xl text-lg font-light leading-8 text-slate-200">@yield('descripcion')</p>
                 @endif

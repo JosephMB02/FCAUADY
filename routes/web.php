@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/nuestra-facultad', [PageController::class, 'show'])->defaults('page', 'nuestra-facultad')->name('nuestra-facultad');
 Route::get('/oferta', [PageController::class, 'show'])->defaults('page', 'oferta')->name('oferta');
+Route::get('/oferta/{program}', [PageController::class, 'program'])->name('oferta.programa');
 Route::get('/aspirantes', [PageController::class, 'show'])->defaults('page', 'aspirantes')->name('aspirantes');
 Route::get('/estudiantes', [PageController::class, 'show'])->defaults('page', 'estudiantes')->name('estudiantes');
 Route::get('/investigacion', [PageController::class, 'show'])->defaults('page', 'investigacion')->name('investigacion');

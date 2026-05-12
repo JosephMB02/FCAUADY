@@ -15,6 +15,17 @@ class PageController extends Controller
         return view('pages.show', $pages[$page]);
     }
 
+    public function program(string $program): View
+    {
+        $programs = $this->programs();
+
+        abort_unless(array_key_exists($program, $programs), 404);
+
+        return view('programs.show', $programs[$program] + [
+            'programs' => $programs,
+        ]);
+    }
+
     protected function pages(): array
     {
         return [
@@ -22,6 +33,11 @@ class PageController extends Controller
                 'route' => 'nuestra-facultad',
                 'title' => 'Nuestra Facultad',
                 'description' => 'Una comunidad universitaria que integra formacion academica, identidad institucional y compromiso con el desarrollo del entorno.',
+                'heroImage' => [
+                    'src' => 'images/fca/fca-fac.jpg',
+                    'alt' => 'Instalaciones y comunidad de la FCA UADY',
+                    'position' => 'center 45%',
+                ],
                 'stats' => [
                     ['value' => '1962', 'label' => 'Origen institucional'],
                     ['value' => 'Comunidad activa', 'label' => 'Vida academica y estudiantil'],
@@ -75,6 +91,7 @@ class PageController extends Controller
                         'eyebrow' => 'Licenciaturas',
                         'title' => 'Formacion profesional de base',
                         'text' => 'Programas orientados al analisis, la gestion y la toma de decisiones en contextos organizacionales y empresariales.',
+                        'href' => '#licenciaturas',
                     ],
                     [
                         'eyebrow' => 'Posgrados',
@@ -87,6 +104,7 @@ class PageController extends Controller
                         'text' => 'Cursos, diplomados y actividades academicas para responder a los cambios del entorno laboral y universitario.',
                     ],
                 ],
+                'programs' => $this->programs(),
                 'sections' => [
                     [
                         'title' => 'Aprendizaje con pertinencia',
@@ -108,6 +126,11 @@ class PageController extends Controller
                 'route' => 'aspirantes',
                 'title' => 'Aspirantes',
                 'description' => 'Informacion institucional para quienes desean integrarse a la FCA UADY y conocer su propuesta academica, formativa y universitaria.',
+                'heroImage' => [
+                    'src' => 'images/fca/fca-asp.jpg',
+                    'alt' => 'Instalaciones de la FCA UADY para aspirantes',
+                    'position' => 'center 45%',
+                ],
                 'stats' => [
                     ['value' => 'Ingreso informado', 'label' => 'Orientacion oportuna'],
                     ['value' => 'Oferta visible', 'label' => 'Programas y servicios'],
@@ -151,6 +174,23 @@ class PageController extends Controller
                 'route' => 'estudiantes',
                 'title' => 'Estudiantes',
                 'description' => 'Servicios, acompanamiento y espacios de participacion para fortalecer la trayectoria academica y la vida universitaria.',
+                'heroSlides' => [
+                    [
+                        'src' => 'images/fca/fca-est1.jpg',
+                        'alt' => 'Estudiantes de la FCA UADY participando en actividades universitarias',
+                        'position' => 'center 45%',
+                    ],
+                    [
+                        'src' => 'images/fca/fca-est2.jpg',
+                        'alt' => 'Comunidad estudiantil en actividad academica',
+                        'position' => 'center 45%',
+                    ],
+                    [
+                        'src' => 'images/fca/fca-est3.jpg',
+                        'alt' => 'Espacios de convivencia y aprendizaje en la FCA UADY',
+                        'position' => 'center 45%',
+                    ],
+                ],
                 'stats' => [
                     ['value' => 'Acompanamiento', 'label' => 'Trayectoria academica'],
                     ['value' => 'Servicios', 'label' => 'Apoyo universitario'],
@@ -194,6 +234,11 @@ class PageController extends Controller
                 'route' => 'investigacion',
                 'title' => 'Investigacion',
                 'description' => 'Impulso al conocimiento, al analisis aplicado y a la colaboracion academica en temas vinculados con la contaduria, la administracion y los negocios.',
+                'heroImage' => [
+                    'src' => 'images/fca/fca-inv.jpg',
+                    'alt' => 'Investigacion y trabajo academico en la FCA UADY',
+                    'position' => 'center 45%',
+                ],
                 'stats' => [
                     ['value' => 'Analisis aplicado', 'label' => 'Conocimiento pertinente'],
                     ['value' => 'Colaboracion', 'label' => 'Trabajo academico'],
@@ -360,6 +405,144 @@ class PageController extends Controller
                     'text' => 'Consulta tambien las secciones de oferta educativa y vinculacion para conocer nuevas oportunidades de desarrollo.',
                     'primary' => ['label' => 'Ver vinculacion', 'href' => '/vinculacion'],
                     'secondary' => ['label' => 'Ver oferta', 'href' => '/oferta'],
+                ],
+            ],
+        ];
+    }
+
+    protected function programs(): array
+    {
+        return [
+            'contaduria' => [
+                'slug' => 'contaduria',
+                'title' => 'Licenciatura en Contaduria',
+                'shortTitle' => 'Contaduria',
+                'description' => 'Formacion orientada al registro, analisis, control y evaluacion de informacion financiera para apoyar decisiones responsables en organizaciones publicas y privadas.',
+                'image' => 'images/fca/fca-conta.jpg',
+                'imageAlt' => 'Estudiantes de contaduria en actividad academica',
+                'accent' => 'from-[#002f6c] to-[#075985]',
+                'stats' => [
+                    ['value' => 'Finanzas', 'label' => 'Analisis y control'],
+                    ['value' => 'Fiscal', 'label' => 'Cumplimiento tributario'],
+                    ['value' => 'Auditoria', 'label' => 'Revision y confianza'],
+                ],
+                'profile' => 'Quien estudia Contaduria desarrolla criterio tecnico, pensamiento analitico y sentido etico para interpretar informacion financiera, fiscal y administrativa.',
+                'skills' => [
+                    'Preparar e interpretar estados financieros.',
+                    'Gestionar obligaciones fiscales y procesos de auditoria.',
+                    'Evaluar riesgos, controles internos y costos.',
+                    'Acompanar la toma de decisiones con informacion confiable.',
+                ],
+                'fields' => [
+                    'Contabilidad financiera y administrativa',
+                    'Auditoria interna y externa',
+                    'Consultoria fiscal',
+                    'Contraloria y finanzas corporativas',
+                ],
+                'curriculum' => [
+                    'Base contable, economica y administrativa',
+                    'Fiscalidad, costos y sistemas de informacion',
+                    'Auditoria, control y gestion financiera',
+                    'Practicas, proyectos integradores y enfoque profesional',
+                ],
+            ],
+            'administracion' => [
+                'slug' => 'administracion',
+                'title' => 'Licenciatura en Administracion',
+                'shortTitle' => 'Administracion',
+                'description' => 'Programa enfocado en la direccion de organizaciones, la gestion del talento, la planeacion estrategica y la mejora de procesos con vision humana y competitiva.',
+                'image' => 'images/fca/fca-admin.jpg',
+                'imageAlt' => 'Espacios de aprendizaje para administracion',
+                'accent' => 'from-[#003b73] to-[#047857]',
+                'stats' => [
+                    ['value' => 'Estrategia', 'label' => 'Direccion organizacional'],
+                    ['value' => 'Talento', 'label' => 'Gestion humana'],
+                    ['value' => 'Procesos', 'label' => 'Mejora continua'],
+                ],
+                'profile' => 'La Licenciatura en Administracion forma perfiles capaces de coordinar equipos, analizar entornos y convertir objetivos institucionales en planes de accion.',
+                'skills' => [
+                    'Disenar estrategias y modelos de gestion.',
+                    'Coordinar equipos y procesos organizacionales.',
+                    'Analizar indicadores para mejorar resultados.',
+                    'Impulsar emprendimientos y proyectos de innovacion.',
+                ],
+                'fields' => [
+                    'Direccion y administracion general',
+                    'Gestion del talento humano',
+                    'Emprendimiento y desarrollo de negocios',
+                    'Consultoria organizacional',
+                ],
+                'curriculum' => [
+                    'Fundamentos de administracion, economia y contabilidad',
+                    'Planeacion, talento humano y comportamiento organizacional',
+                    'Operacion, calidad, finanzas y mercadotecnia',
+                    'Estrategia, emprendimiento y proyectos aplicados',
+                ],
+            ],
+            'mercadotecnia' => [
+                'slug' => 'mercadotecnia',
+                'title' => 'Licenciatura en Mercadotecnia',
+                'shortTitle' => 'Mercadotecnia',
+                'description' => 'Formacion centrada en comprender mercados, crear propuestas de valor y disenar estrategias de comunicacion, marca y comercializacion basadas en datos.',
+                'image' => 'images/fca/fca-mkt.jpg',
+                'imageAlt' => 'Actividad academica vinculada con mercadotecnia',
+                'accent' => 'from-[#7c2d12] to-[#be123c]',
+                'stats' => [
+                    ['value' => 'Mercados', 'label' => 'Investigacion y datos'],
+                    ['value' => 'Marca', 'label' => 'Estrategia creativa'],
+                    ['value' => 'Clientes', 'label' => 'Experiencia y valor'],
+                ],
+                'profile' => 'Mercadotecnia prepara profesionales que interpretan consumidores, tendencias y canales para desarrollar soluciones comerciales pertinentes y medibles.',
+                'skills' => [
+                    'Investigar mercados y analizar comportamiento del consumidor.',
+                    'Construir estrategias de marca, producto y comunicacion.',
+                    'Gestionar campanas digitales y comerciales.',
+                    'Medir resultados para optimizar decisiones de mercado.',
+                ],
+                'fields' => [
+                    'Investigacion de mercados',
+                    'Gestion de marca y comunicacion',
+                    'Marketing digital y comercio electronico',
+                    'Ventas, servicio y experiencia del cliente',
+                ],
+                'curriculum' => [
+                    'Fundamentos de negocios, comunicacion y comportamiento',
+                    'Investigacion, segmentacion y estrategia de mercado',
+                    'Branding, canales digitales y comercializacion',
+                    'Analitica, proyectos y desarrollo de campanas',
+                ],
+            ],
+            'lati' => [
+                'slug' => 'lati',
+                'title' => 'Licenciatura en Administracion de las Tecnologias de la Informacion',
+                'shortTitle' => 'LATI',
+                'description' => 'Programa que integra administracion, tecnologia y analisis de informacion para gestionar soluciones digitales alineadas con los objetivos de las organizaciones.',
+                'image' => 'images/fca/fca-lati.jpg',
+                'imageAlt' => 'Tecnologias de informacion aplicadas a la administracion',
+                'accent' => 'from-[#1e3a8a] to-[#0f766e]',
+                'stats' => [
+                    ['value' => 'Tecnologia', 'label' => 'Soluciones digitales'],
+                    ['value' => 'Datos', 'label' => 'Analisis para decidir'],
+                    ['value' => 'Gestion', 'label' => 'Proyectos TI'],
+                ],
+                'profile' => 'LATI forma profesionales que conectan necesidades administrativas con herramientas tecnologicas, datos y procesos de transformacion digital.',
+                'skills' => [
+                    'Administrar proyectos y servicios de tecnologias de informacion.',
+                    'Modelar procesos y proponer soluciones digitales.',
+                    'Analizar datos para mejorar la gestion organizacional.',
+                    'Coordinar equipos tecnicos y usuarios de negocio.',
+                ],
+                'fields' => [
+                    'Gestion de proyectos tecnologicos',
+                    'Analisis de datos y sistemas de informacion',
+                    'Transformacion digital',
+                    'Consultoria en procesos y tecnologia',
+                ],
+                'curriculum' => [
+                    'Administracion, programacion y fundamentos de datos',
+                    'Sistemas de informacion, procesos y redes',
+                    'Gestion de proyectos, analitica y seguridad',
+                    'Innovacion digital y soluciones organizacionales',
                 ],
             ],
         ];

@@ -1,12 +1,12 @@
 <footer class="mt-12 border-t-4 border-yellow-500 bg-[#001530] py-16 text-gray-300">
     <div class="container mx-auto grid grid-cols-1 gap-12 px-6 md:grid-cols-3">
-        <div>
+        <div class="flex items-start gap-5">
             <img
                 src="{{ asset('images/logo-uady.png') }}"
                 alt="Logo UADY"
-                class="mb-6 h-12 w-auto opacity-90 brightness-0 invert"
+                class="h-12 w-auto flex-shrink-0 opacity-90 brightness-0 invert"
             >
-            <p class="mb-6 text-sm font-light leading-relaxed">
+            <p class="max-w-xs text-sm font-light leading-relaxed">
                 Formando lideres con vision global, etica y espiritu emprendedor para transformar el entorno.
             </p>
         </div>

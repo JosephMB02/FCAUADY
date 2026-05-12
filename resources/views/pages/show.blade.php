@@ -24,17 +24,52 @@
                     :eyebrow="$card['eyebrow']"
                     :title="$card['title']"
                     :text="$card['text']"
+                    :href="$card['href'] ?? null"
                 />
             @endforeach
+        </section>
+    @endif
+
+    @if (! empty($programs))
+        <section id="licenciaturas" class="mt-10">
+            <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                <div>
+                    <p class="text-sm font-bold uppercase tracking-[0.25em] text-yellow-600">Licenciaturas</p>
+                    <h2 class="mt-3 text-3xl font-extrabold text-[#002f6c]">Elige una ruta profesional</h2>
+                </div>
+                <p class="max-w-2xl leading-7 text-slate-600">
+                    Cada programa combina bases disciplinares, experiencias aplicadas y acompanamiento academico para fortalecer tu trayectoria.
+                </p>
+            </div>
+
+            <div class="grid gap-6 lg:grid-cols-4">
+                @foreach ($programs as $program)
+                    <a href="{{ route('oferta.programa', $program['slug']) }}" class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                        <img
+                            src="{{ asset($program['image']) }}"
+                            alt="{{ $program['imageAlt'] }}"
+                            class="h-40 w-full object-cover transition duration-300 group-hover:scale-105"
+                        >
+                        <div class="p-6">
+                            <p class="text-xs font-bold uppercase tracking-[0.22em] text-yellow-600">Licenciatura</p>
+                            <h3 class="mt-3 text-xl font-extrabold text-[#002f6c]">{{ $program['shortTitle'] }}</h3>
+                            <p class="mt-4 line-clamp-4 leading-7 text-slate-600">{{ $program['description'] }}</p>
+                            <span class="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.18em] text-[#002f6c] transition group-hover:text-yellow-700">
+                                Ver programa
+                            </span>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         </section>
     @endif
 
     @if (! empty($sections))
         <section class="mt-10 grid gap-6 lg:grid-cols-2">
             @foreach ($sections as $section)
-                <article class="rounded-[1.75rem] border border-slate-100 bg-slate-50 p-8">
-                    <h2 class="text-2xl font-extrabold text-[#002f6c]">{{ $section['title'] }}</h2>
-                    <p class="mt-4 leading-8 text-slate-600">{{ $section['content'] }}</p>
+                <article class="flex min-h-56 flex-col items-center justify-center rounded-[1.75rem] border border-slate-200 bg-[#e8eef7] p-8 text-center">
+                    <h2 class="text-2xl font-extrabold leading-tight text-[#002f6c]">{{ $section['title'] }}</h2>
+                    <p class="mt-4 max-w-2xl leading-8 text-slate-600">{{ $section['content'] }}</p>
                 </article>
             @endforeach
         </section>

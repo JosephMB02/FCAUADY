@@ -13,74 +13,74 @@ class HomeController extends Controller
 
         $accesos = [
             [
-                'eyebrow' => 'Informacion institucional',
+                'eyebrow' => 'Información institucional',
                 'title' => 'Nuestra Facultad',
                 'text' => 'Conoce la identidad, los espacios y la experiencia universitaria que distinguen a la FCA UADY.',
                 'href' => '/nuestra-facultad',
             ],
             [
-                'eyebrow' => 'Ingreso y orientacion',
+                'eyebrow' => 'Ingreso y orientación',
                 'title' => 'Aspirantes',
-                'text' => 'Explora la oferta academica y la ruta de ingreso para integrarte a la comunidad universitaria.',
+                'text' => 'Explora la oferta académica y la ruta de ingreso para integrarte a la comunidad universitaria.',
                 'href' => '/aspirantes',
             ],
             [
                 'eyebrow' => 'Trayectoria universitaria',
                 'title' => 'Estudiantes',
-                'text' => 'Accede a informacion sobre acompanamiento, servicios y vida estudiantil dentro de la facultad.',
+                'text' => 'Accede a información sobre acompañamiento, servicios y vida estudiantil dentro de la facultad.',
                 'href' => '/estudiantes',
             ],
             [
                 'eyebrow' => 'Continuidad profesional',
                 'title' => 'Egresados',
-                'text' => 'Mantente vinculado con la FCA UADY a traves de espacios de actualizacion y comunidad profesional.',
+                'text' => 'Mantente vinculado con la FCA UADY a través de espacios de actualización y comunidad profesional.',
                 'href' => '/egresados',
             ],
         ];
 
         $indicadores = [
-            ['value' => 'Formacion integral', 'label' => 'Trayectoria academica y profesional', 'class' => 'border-yellow-300/40 bg-yellow-400/20'],
+            ['value' => 'Formación integral', 'label' => 'Trayectoria académica y profesional', 'class' => 'border-yellow-300/40 bg-yellow-400/20'],
             ['value' => 'Vida universitaria', 'label' => 'Experiencias que fortalecen la comunidad', 'class' => 'border-sky-300/40 bg-sky-400/20'],
-            ['value' => 'Vinculacion activa', 'label' => 'Relacion con el entorno y los sectores', 'class' => 'border-emerald-300/40 bg-emerald-400/20'],
-            ['value' => 'Vision global', 'label' => 'Internacionalizacion y colaboracion academica', 'class' => 'border-rose-300/40 bg-rose-400/20'],
+            ['value' => 'Vinculación activa', 'label' => 'Relación con el entorno y los sectores', 'class' => 'border-emerald-300/40 bg-emerald-400/20'],
+            ['value' => 'Visión global', 'label' => 'Internacionalización y colaboración académica', 'class' => 'border-rose-300/40 bg-rose-400/20'],
         ];
 
         $programas = [
             [
                 'eyebrow' => 'Licenciaturas',
-                'title' => 'Oferta academica con enfoque estrategico',
-                'text' => 'Programas de formacion profesional orientados al analisis, la gestion y la toma de decisiones.',
+                'title' => 'Oferta académica con enfoque estratégico',
+                'text' => 'Programas de formación profesional orientados al análisis, la gestión y la toma de decisiones.',
                 'href' => '/oferta',
             ],
             [
-                'eyebrow' => 'Investigacion',
+                'eyebrow' => 'Investigación',
                 'title' => 'Conocimiento aplicado al entorno',
-                'text' => 'La investigacion fortalece el aprendizaje y contribuye a la atencion de desafios organizacionales y sociales.',
+                'text' => 'La investigación fortalece el aprendizaje y contribuye a la atención de desafíos organizacionales y sociales.',
                 'href' => '/investigacion',
             ],
             [
-                'eyebrow' => 'Vinculacion',
+                'eyebrow' => 'Vinculación',
                 'title' => 'Experiencias conectadas con la realidad profesional',
-                'text' => 'Servicios, proyectos y colaboraciones que enriquecen la formacion con experiencias aplicadas.',
+                'text' => 'Servicios, proyectos y colaboraciones que enriquecen la formación con experiencias aplicadas.',
                 'href' => '/vinculacion',
             ],
         ];
 
         $agenda = [
             [
-                'title' => 'Jornada de induccion para aspirantes',
+                'title' => 'Jornada de inducción para aspirantes',
                 'meta' => 'Comunidad FCA UADY',
-                'text' => 'Espacio informativo para conocer la oferta academica, la vida universitaria y los servicios institucionales.',
+                'text' => 'Espacio informativo para conocer la oferta académica, la vida universitaria y los servicios institucionales.',
             ],
             [
-                'title' => 'Encuentro academico y profesional',
-                'meta' => 'Vinculacion e intercambio',
-                'text' => 'Actividad orientada al dialogo entre formacion universitaria, colaboracion y proyeccion profesional.',
+                'title' => 'Encuentro académico y profesional',
+                'meta' => 'Vinculación e intercambio',
+                'text' => 'Actividad orientada al diálogo entre formación universitaria, colaboración y proyección profesional.',
             ],
             [
-                'title' => 'Sesion informativa de movilidad e internacionalizacion',
+                'title' => 'Sesión informativa de movilidad e internacionalización',
                 'meta' => 'Experiencias globales',
-                'text' => 'Presentacion de oportunidades que amplian la perspectiva academica y la experiencia universitaria.',
+                'text' => 'Presentación de oportunidades que amplían la perspectiva académica y la experiencia universitaria.',
             ],
         ];
 

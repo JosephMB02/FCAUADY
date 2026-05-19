@@ -10,7 +10,7 @@
     <section class="overflow-hidden rounded-[2rem] bg-gradient-to-r {{ $accent }} text-white shadow-xl">
         <div class="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
             <div class="p-8 md:p-10">
-                <p class="text-sm font-bold uppercase tracking-[0.25em] text-yellow-300">Oferta Educativa</p>
+                <p class="text-base font-bold uppercase tracking-[0.25em] text-yellow-300">Oferta Educativa</p>
                 <h2 class="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">{{ $shortTitle }}</h2>
                 <p class="mt-5 leading-8 text-slate-100">{{ $profile }}</p>
 
@@ -54,8 +54,8 @@
     <section class="mt-10 rounded-[1.75rem] border border-slate-200 bg-white p-8 shadow-sm">
         <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-                <p class="text-sm font-bold uppercase tracking-[0.25em] text-yellow-600">Ruta formativa</p>
-                <h2 class="mt-3 text-3xl font-extrabold text-[#002f6c]">Una formacion progresiva y aplicada</h2>
+                <p class="text-base font-bold uppercase tracking-[0.25em] text-yellow-600">Ruta formativa</p>
+                <h2 class="mt-3 text-3xl font-extrabold text-[#002f6c]">Una formación progresiva y aplicada</h2>
             </div>
             <a href="/oferta" class="inline-flex items-center justify-center rounded-full border border-[#002f6c] px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-[#002f6c] transition hover:bg-[#002f6c] hover:text-white">
                 Volver a oferta
@@ -65,7 +65,7 @@
         <div class="mt-8 grid gap-5 md:grid-cols-4">
             @foreach ($curriculum as $index => $item)
                 <article class="flex min-h-40 flex-col items-center justify-center rounded-[1.25rem] bg-slate-50 p-5 text-center">
-                    <p class="text-sm font-extrabold text-yellow-600">0{{ $index + 1 }}</p>
+                    <p class="text-base font-extrabold text-yellow-600">0{{ $index + 1 }}</p>
                     <p class="mt-3 leading-7 text-slate-600">{{ $item }}</p>
                 </article>
             @endforeach
@@ -75,7 +75,7 @@
     <section class="mt-10 rounded-[2rem] bg-gradient-to-r from-[#001530] to-[#002f6c] p-8 text-white shadow-xl">
         <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
-                <p class="text-sm font-bold uppercase tracking-[0.25em] text-yellow-400">Tambien puedes explorar</p>
+                <p class="text-base font-bold uppercase tracking-[0.25em] text-yellow-400">También puedes explorar</p>
                 <h2 class="mt-3 text-3xl font-extrabold">Licenciaturas de la FCA UADY</h2>
             </div>
 

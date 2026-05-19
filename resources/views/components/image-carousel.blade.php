@@ -28,19 +28,7 @@
             </article>
         @endforeach
 
-        <div class="absolute inset-x-0 bottom-4 z-20 flex items-center justify-between px-4">
-            <div class="flex items-center gap-2 rounded-full border border-white/20 bg-black/25 px-3 py-2 backdrop-blur-sm">
-                @foreach ($slides as $index => $slide)
-                    <button
-                        type="button"
-                        class="h-2.5 w-8 rounded-full transition {{ $index === 0 ? 'bg-yellow-400' : 'bg-white/45' }}"
-                        data-image-carousel-indicator
-                        data-image-carousel-go="{{ $index }}"
-                        aria-label="Ir a imagen {{ $index + 1 }}"
-                    ></button>
-                @endforeach
-            </div>
-
+        <div class="absolute inset-x-0 bottom-4 z-20 flex flex-col items-start gap-3 px-4 sm:flex-row sm:items-center sm:justify-between">
             <div class="flex items-center gap-2">
                 <button
                     type="button"
@@ -60,6 +48,18 @@
                     &gt;
                 </button>
             </div>
+
+            <div class="flex items-center gap-2 rounded-full border border-white/20 bg-black/25 px-3 py-2 backdrop-blur-sm">
+                @foreach ($slides as $index => $slide)
+                    <button
+                        type="button"
+                        class="h-2.5 w-8 rounded-full transition {{ $index === 0 ? 'bg-yellow-400' : 'bg-white/45' }}"
+                        data-image-carousel-indicator
+                        data-image-carousel-go="{{ $index }}"
+                        aria-label="Ir a imagen {{ $index + 1 }}"
+                    ></button>
+                @endforeach
+            </div>
         </div>
     </div>
 
@@ -78,6 +78,7 @@
             const prevButton = carousel.querySelector('[data-image-carousel-prev]');
             const nextButton = carousel.querySelector('[data-image-carousel-next]');
             let currentIndex = 0;
+            let autoplay = null;
 
             const renderSlide = (targetIndex) => {
                 currentIndex = (targetIndex + slides.length) % slides.length;
@@ -100,14 +101,32 @@
                 });
             };
 
-            prevButton?.addEventListener('click', () => renderSlide(currentIndex - 1));
-            nextButton?.addEventListener('click', () => renderSlide(currentIndex + 1));
+            const startAutoplay = () => {
+                if (slides.length <= 1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return;
+                }
+
+                window.clearInterval(autoplay);
+                autoplay = window.setInterval(() => renderSlide(currentIndex + 1), 6500);
+            };
+
+            const moveManually = (targetIndex) => {
+                renderSlide(targetIndex);
+                startAutoplay();
+            };
+
+            prevButton?.addEventListener('click', () => moveManually(currentIndex - 1));
+            nextButton?.addEventListener('click', () => moveManually(currentIndex + 1));
 
             indicators.forEach((indicator) => {
                 indicator.addEventListener('click', () => {
-                    renderSlide(Number(indicator.dataset.imageCarouselGo));
+                    moveManually(Number(indicator.dataset.imageCarouselGo));
                 });
             });
+
+            carousel.addEventListener('mouseenter', () => window.clearInterval(autoplay));
+            carousel.addEventListener('mouseleave', startAutoplay);
+            startAutoplay();
         })();
     </script>
 @endif

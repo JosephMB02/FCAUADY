@@ -24,9 +24,9 @@ class NoticiaFactory extends Factory
         return [
             'titulo' => fake()->randomElement([
                 'Estudiantes fortalecen proyectos de emprendimiento',
-                'FCA UADY impulsa actividades de vinculacion academica',
+                'FCA UADY impulsa actividades de vinculación académica',
                 'Comunidad universitaria participa en jornada formativa',
-                'Docentes promueven innovacion en las aulas',
+                'Docentes promueven innovación en las aulas',
             ]),
             'imagen' => fake()->randomElement($imagenes),
             'contenido' => fake()->paragraph(4),

@@ -1,15 +1,15 @@
 @extends('layouts.secondary')
 
-@section('titulo', 'Pagina no encontrada')
+@section('titulo', 'Página no encontrada')
 
 @section('descripcion')
-La direccion solicitada no existe o fue escrita de forma incorrecta.
+La dirección solicitada no existe o fue escrita de forma incorrecta.
 @endsection
 
 @section('contenido')
 <div class="mx-auto max-w-3xl text-center">
     <p class="text-lg leading-8 text-slate-600">
-        Te invitamos a regresar a la pagina principal para continuar navegando por la informacion de la Facultad de Contaduria y Administracion.
+        Te invitamos a regresar a la página principal para continuar navegando por la información de la Facultad de Contaduría y Administración.
     </p>
 
     <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">

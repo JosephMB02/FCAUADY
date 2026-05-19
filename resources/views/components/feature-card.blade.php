@@ -3,12 +3,12 @@
     'title' => '',
     'text' => '',
     'href' => null,
-    'action' => 'Conocer mas',
+    'action' => 'Conocer más',
 ])
 
 <article class="flex h-full min-h-64 flex-col items-center rounded-[1.75rem] border border-slate-100 bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
     @if ($eyebrow)
-        <p class="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-yellow-600">{{ $eyebrow }}</p>
+        <p class="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-yellow-600">{{ $eyebrow }}</p>
     @endif
 
     <h3 class="text-xl font-bold leading-tight text-[#002f6c]">{{ $title }}</h3>

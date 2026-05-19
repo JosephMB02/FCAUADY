@@ -22,7 +22,7 @@
                 <div class="absolute inset-0">
                     <img
                         src="{{ $slide['image'] ?? asset('images/Noticia1.jpg') }}"
-                        alt="{{ $slide['image_alt'] ?? ($slide['h1'] ?? 'Galeria FCA UADY') }}"
+                        alt="{{ $slide['image_alt'] ?? ($slide['h1'] ?? 'Galería FCA UADY') }}"
                         class="h-full w-full object-cover"
                         style="object-position: {{ $slide['image_position'] ?? 'center center' }};"
                     >
@@ -35,7 +35,7 @@
                     <div class="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10">
                         <div class="max-w-3xl">
                             @if (! empty($slide['eyebrow']))
-                                <p class="mb-5 text-sm font-bold uppercase tracking-[0.28em] text-yellow-400">
+                                <p class="mb-5 text-base font-bold uppercase tracking-[0.28em] text-yellow-300">
                                     {{ $slide['eyebrow'] }}
                                 </p>
                             @endif
@@ -48,7 +48,7 @@
                                 @endif
 
                                 @if (! empty($slide['h2']))
-                                    <h2 class="text-3xl font-semibold leading-tight text-yellow-300 md:text-5xl">
+                                    <h2 class="text-4xl font-semibold leading-tight text-yellow-300 md:text-6xl">
                                         {{ $slide['h2'] }}
                                     </h2>
                                 @endif
@@ -143,6 +143,7 @@
             const prevButton = gallery.querySelector('[data-gallery-prev]');
             const nextButton = gallery.querySelector('[data-gallery-next]');
             let currentIndex = 0;
+            let autoplay = null;
 
             const renderSlide = (targetIndex) => {
                 currentIndex = (targetIndex + slides.length) % slides.length;
@@ -167,14 +168,32 @@
                 });
             };
 
-            prevButton?.addEventListener('click', () => renderSlide(currentIndex - 1));
-            nextButton?.addEventListener('click', () => renderSlide(currentIndex + 1));
+            const startAutoplay = () => {
+                if (slides.length <= 1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return;
+                }
+
+                window.clearInterval(autoplay);
+                autoplay = window.setInterval(() => renderSlide(currentIndex + 1), 6500);
+            };
+
+            const moveManually = (targetIndex) => {
+                renderSlide(targetIndex);
+                startAutoplay();
+            };
+
+            prevButton?.addEventListener('click', () => moveManually(currentIndex - 1));
+            nextButton?.addEventListener('click', () => moveManually(currentIndex + 1));
 
             indicators.forEach((indicator) => {
                 indicator.addEventListener('click', () => {
-                    renderSlide(Number(indicator.dataset.galleryGo));
+                    moveManually(Number(indicator.dataset.galleryGo));
                 });
             });
+
+            gallery.addEventListener('mouseenter', () => window.clearInterval(autoplay));
+            gallery.addEventListener('mouseleave', startAutoplay);
+            startAutoplay();
         })();
     </script>
 @endif

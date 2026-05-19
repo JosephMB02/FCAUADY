@@ -7,7 +7,7 @@
             class="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
         >
 
-        <div class="absolute left-4 top-4 z-20 rounded-md bg-yellow-500 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#002f6c] shadow-sm">
+        <div class="absolute left-4 top-4 z-20 rounded-md bg-yellow-500 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-[#002f6c] shadow-sm">
             Actualidad
         </div>
     </div>
@@ -24,7 +24,7 @@
         </p>
 
         <a href="#" class="mt-auto inline-flex items-center text-sm font-bold uppercase tracking-wider text-[#002f6c] transition-colors hover:text-yellow-600">
-            Leer articulo
+            Leer artículo
             <svg class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>

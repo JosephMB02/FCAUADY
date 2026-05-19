@@ -34,11 +34,11 @@
         <section id="licenciaturas" class="mt-10">
             <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
                 <div>
-                    <p class="text-sm font-bold uppercase tracking-[0.25em] text-yellow-600">Licenciaturas</p>
+                    <p class="text-base font-bold uppercase tracking-[0.25em] text-yellow-600">Licenciaturas</p>
                     <h2 class="mt-3 text-3xl font-extrabold text-[#002f6c]">Elige una ruta profesional</h2>
                 </div>
                 <p class="max-w-2xl leading-7 text-slate-600">
-                    Cada programa combina bases disciplinares, experiencias aplicadas y acompanamiento academico para fortalecer tu trayectoria.
+                    Cada programa combina bases disciplinares, experiencias aplicadas y acompañamiento académico para fortalecer tu trayectoria.
                 </p>
             </div>
 
@@ -51,7 +51,7 @@
                             class="h-40 w-full object-cover transition duration-300 group-hover:scale-105"
                         >
                         <div class="p-6">
-                            <p class="text-xs font-bold uppercase tracking-[0.22em] text-yellow-600">Licenciatura</p>
+                            <p class="text-sm font-bold uppercase tracking-[0.22em] text-yellow-600">Licenciatura</p>
                             <h3 class="mt-3 text-xl font-extrabold text-[#002f6c]">{{ $program['shortTitle'] }}</h3>
                             <p class="mt-4 line-clamp-4 leading-7 text-slate-600">{{ $program['description'] }}</p>
                             <span class="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.18em] text-[#002f6c] transition group-hover:text-yellow-700">
@@ -79,7 +79,7 @@
         <section class="mt-10 rounded-[2rem] bg-gradient-to-r from-[#001530] to-[#002f6c] p-8 text-white shadow-xl">
             <div class="grid gap-6 lg:grid-cols-[2fr_1fr] lg:items-center">
                 <div>
-                    <p class="text-sm font-bold uppercase tracking-[0.25em] text-yellow-400">Explora mas</p>
+                    <p class="text-base font-bold uppercase tracking-[0.25em] text-yellow-400">Explora más</p>
                     <h2 class="mt-3 text-3xl font-extrabold">{{ $cta['title'] }}</h2>
                     <p class="mt-4 max-w-3xl leading-8 text-slate-200">{{ $cta['text'] }}</p>
                 </div>

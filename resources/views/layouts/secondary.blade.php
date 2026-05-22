@@ -16,7 +16,7 @@
     <main class="flex-grow">
         <section class="bg-[#001530] px-6 py-16 text-white">
             <div class="container mx-auto">
-                <p class="mb-4 text-base font-bold uppercase tracking-[0.25em] text-yellow-300">FCA UADY</p>
+                <p class="mb-4 text-lg font-bold uppercase tracking-[0.24em] text-yellow-300">FCA UADY</p>
                 <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">@yield('titulo')</h1>
                 @isset($heroSlides)
                     <x-image-carousel :slides="$heroSlides" />

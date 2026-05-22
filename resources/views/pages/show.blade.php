@@ -30,11 +30,49 @@
         </section>
     @endif
 
+    @if (! empty($focus))
+        <section class="mt-10 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-950 text-white shadow-xl">
+            <div class="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+                <div class="p-8 md:p-10">
+                    <p class="text-lg font-bold uppercase tracking-[0.24em] text-yellow-300">{{ $focus['eyebrow'] }}</p>
+                    <h2 class="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">{{ $focus['title'] }}</h2>
+                    <p class="mt-5 leading-8 text-slate-200">{{ $focus['text'] }}</p>
+                </div>
+
+                <div class="grid content-center gap-4 bg-white/8 p-8 md:p-10">
+                    @foreach ($focus['items'] as $item)
+                        <div class="rounded-2xl border border-white/15 bg-white/10 p-5">
+                            <p class="leading-7 text-slate-100">{{ $item }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
+    @if (! empty($pathways))
+        <section class="mt-10">
+            <div class="mb-6">
+                <p class="text-lg font-bold uppercase tracking-[0.24em] text-yellow-600">Panorama académico</p>
+                <h2 class="mt-3 text-3xl font-extrabold text-[#002f6c]">Más formas de vivir esta área</h2>
+            </div>
+
+            <div class="grid gap-5 lg:grid-cols-3">
+                @foreach ($pathways as $pathway)
+                    <article class="rounded-[1.25rem] border border-slate-200 bg-white p-6 shadow-sm">
+                        <h3 class="text-xl font-extrabold leading-tight text-[#002f6c]">{{ $pathway['title'] }}</h3>
+                        <p class="mt-4 leading-7 text-slate-600">{{ $pathway['text'] }}</p>
+                    </article>
+                @endforeach
+            </div>
+        </section>
+    @endif
+
     @if (! empty($programs))
         <section id="licenciaturas" class="mt-10">
             <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
                 <div>
-                    <p class="text-base font-bold uppercase tracking-[0.25em] text-yellow-600">Licenciaturas</p>
+                    <p class="text-lg font-bold uppercase tracking-[0.24em] text-yellow-600">Licenciaturas</p>
                     <h2 class="mt-3 text-3xl font-extrabold text-[#002f6c]">Elige una ruta profesional</h2>
                 </div>
                 <p class="max-w-2xl leading-7 text-slate-600">
@@ -51,7 +89,7 @@
                             class="h-40 w-full object-cover transition duration-300 group-hover:scale-105"
                         >
                         <div class="p-6">
-                            <p class="text-sm font-bold uppercase tracking-[0.22em] text-yellow-600">Licenciatura</p>
+                            <p class="text-base font-bold uppercase tracking-[0.2em] text-yellow-600">Licenciatura</p>
                             <h3 class="mt-3 text-xl font-extrabold text-[#002f6c]">{{ $program['shortTitle'] }}</h3>
                             <p class="mt-4 line-clamp-4 leading-7 text-slate-600">{{ $program['description'] }}</p>
                             <span class="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.18em] text-[#002f6c] transition group-hover:text-yellow-700">
@@ -79,7 +117,7 @@
         <section class="mt-10 rounded-[2rem] bg-gradient-to-r from-[#001530] to-[#002f6c] p-8 text-white shadow-xl">
             <div class="grid gap-6 lg:grid-cols-[2fr_1fr] lg:items-center">
                 <div>
-                    <p class="text-base font-bold uppercase tracking-[0.25em] text-yellow-400">Explora más</p>
+                    <p class="text-lg font-bold uppercase tracking-[0.24em] text-yellow-400">Explora más</p>
                     <h2 class="mt-3 text-3xl font-extrabold">{{ $cta['title'] }}</h2>
                     <p class="mt-4 max-w-3xl leading-8 text-slate-200">{{ $cta['text'] }}</p>
                 </div>

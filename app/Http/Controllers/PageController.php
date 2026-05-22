@@ -12,7 +12,7 @@ class PageController extends Controller
 
         abort_unless(array_key_exists($page, $pages), 404);
 
-        return view('pages.show', $pages[$page]);
+        return view('pages.show', $this->withExpandedPage($pages[$page]));
     }
 
     public function program(string $program): View
@@ -21,9 +21,143 @@ class PageController extends Controller
 
         abort_unless(array_key_exists($program, $programs), 404);
 
-        return view('programs.show', $programs[$program] + [
+        return view('programs.show', $this->withExpandedProgram($programs[$program]) + [
             'programs' => $programs,
         ]);
+    }
+
+    protected function withExpandedPage(array $page): array
+    {
+        $expanded = [
+            'nuestra-facultad' => [
+                'focus' => [
+                    'eyebrow' => 'Comunidad FCA',
+                    'title' => 'Una facultad que aprende con su entorno',
+                    'text' => 'La experiencia universitaria combina aula, investigación, actividades estudiantiles y vínculo con organizaciones. La FCA se presenta como un espacio donde la formación económico-administrativa se vuelve práctica, socialmente responsable y conectada con Yucatán.',
+                    'items' => [
+                        'Identidad universitaria con sentido de pertenencia.',
+                        'Ambientes para colaboración, tutoría y aprendizaje aplicado.',
+                        'Vida académica que dialoga con empresas, instituciones y comunidad.',
+                    ],
+                ],
+                'pathways' => [
+                    ['title' => 'Formación integral', 'text' => 'El modelo formativo articula competencias profesionales, responsabilidad social, cultura maya, emprendimiento y uso estratégico de tecnologías.'],
+                    ['title' => 'Gobernanza académica', 'text' => 'La facultad organiza su trabajo mediante dirección, secretarías, unidad de posgrado e investigación, servicios escolares y áreas de apoyo a la comunidad.'],
+                    ['title' => 'Campus vivo', 'text' => 'Los eventos, convocatorias, avisos, proyectos y actividades culturales hacen visible una comunidad que no se limita al horario de clase.'],
+                ],
+            ],
+            'aspirantes' => [
+                'focus' => [
+                    'eyebrow' => 'Antes de elegir',
+                    'title' => 'Conecta tus intereses con una ruta profesional',
+                    'text' => 'Elegir una carrera en la FCA implica pensar cómo quieres participar en las organizaciones: desde las finanzas y la auditoría, hasta la estrategia, los mercados, los datos o la tecnología aplicada a los negocios.',
+                    'items' => [
+                        'Revisa el perfil de cada licenciatura y su malla curricular.',
+                        'Identifica qué asignaturas despiertan curiosidad genuina.',
+                        'Piensa en escenarios profesionales donde te gustaría resolver problemas.',
+                    ],
+                ],
+                'pathways' => [
+                    ['title' => 'Exploración vocacional', 'text' => 'Compara campos profesionales, competencias y experiencias prácticas para ubicar la carrera que mejor conversa con tus fortalezas.'],
+                    ['title' => 'Preparación académica', 'text' => 'Fortalece lectura, comunicación, matemáticas, pensamiento lógico, cultura digital y comprensión del entorno social y económico.'],
+                    ['title' => 'Ingreso con claridad', 'text' => 'La mejor decisión no solo mira el nombre de la carrera: mira el tipo de retos que quieres aprender a enfrentar durante varios semestres.'],
+                ],
+            ],
+            'estudiantes' => [
+                'focus' => [
+                    'eyebrow' => 'Trayectoria universitaria',
+                    'title' => 'Aprender, participar y construir futuro',
+                    'text' => 'La vida estudiantil puede leerse como una ruta de crecimiento: organizar tu carga académica, participar en proyectos, buscar asesoría, aprovechar convocatorias y convertir cada semestre en evidencia de desarrollo profesional.',
+                    'items' => [
+                        'Planeación de asignaturas, servicio social y prácticas profesionales.',
+                        'Participación en eventos, concursos, ferias y actividades culturales.',
+                        'Construcción de portafolio con proyectos, evidencias y experiencias.',
+                    ],
+                ],
+                'pathways' => [
+                    ['title' => 'Acompañamiento', 'text' => 'Tutorías, orientación académica y servicios institucionales ayudan a tomar mejores decisiones durante la trayectoria.'],
+                    ['title' => 'Experiencia aplicada', 'text' => 'Las visitas académicas, proyectos integradores y actividades con organizaciones acercan la profesión a situaciones reales.'],
+                    ['title' => 'Vida de campus', 'text' => 'La participación estudiantil fortalece liderazgo, comunicación, colaboración y sentido de comunidad.'],
+                ],
+            ],
+            'investigacion' => [
+                'focus' => [
+                    'eyebrow' => 'Conocimiento aplicado',
+                    'title' => 'Investigar para comprender y transformar organizaciones',
+                    'text' => 'La investigación en una facultad económico-administrativa se vuelve valiosa cuando explica decisiones, mide impactos, entiende mercados, analiza tecnologías y aporta soluciones pertinentes al contexto regional.',
+                    'items' => [
+                        'Problemas de gestión, finanzas, mercados y transformación digital.',
+                        'Proyectos con potencial de transferencia a organizaciones.',
+                        'Formación de pensamiento crítico desde licenciatura y posgrado.',
+                    ],
+                ],
+                'pathways' => [
+                    ['title' => 'Líneas de trabajo', 'text' => 'Las áreas de administración, contaduría, mercadotecnia, tecnologías de información y negocios ofrecen preguntas de investigación con impacto directo.'],
+                    ['title' => 'Semilleros académicos', 'text' => 'El estudiantado puede acercarse a investigación mediante proyectos, seminarios, tesis y colaboración con profesorado.'],
+                    ['title' => 'Impacto social', 'text' => 'El conocimiento generado ayuda a mejorar prácticas de gestión, transparencia, innovación y desarrollo sustentable.'],
+                ],
+            ],
+            'vinculacion' => [
+                'focus' => [
+                    'eyebrow' => 'Puente profesional',
+                    'title' => 'La facultad como punto de encuentro con el entorno',
+                    'text' => 'La vinculación convierte el aprendizaje en experiencia: prácticas, servicios, proyectos, visitas, educación continua y colaboración con sectores que necesitan perfiles capaces de analizar, decidir y ejecutar.',
+                    'items' => [
+                        'Relación con empresas, instituciones públicas y organizaciones sociales.',
+                        'Proyectos donde el aula conversa con necesidades reales.',
+                        'Experiencias que fortalecen empleabilidad y criterio profesional.',
+                    ],
+                ],
+                'pathways' => [
+                    ['title' => 'Prácticas profesionales', 'text' => 'Permiten aplicar competencias, conocer culturas organizacionales y producir evidencia concreta de desempeño.'],
+                    ['title' => 'Servicios y extensión', 'text' => 'La facultad puede aportar diagnóstico, capacitación, consultoría y acompañamiento desde su capacidad académica.'],
+                    ['title' => 'Redes de oportunidad', 'text' => 'Las alianzas abren conversaciones para empleo, emprendimiento, proyectos y aprendizaje permanente.'],
+                ],
+            ],
+            'internacionalizacion' => [
+                'focus' => [
+                    'eyebrow' => 'Perspectiva global',
+                    'title' => 'Aprender a leer organizaciones más allá de una frontera',
+                    'text' => 'La internacionalización no es solo movilidad: también es comparar contextos, practicar idiomas, analizar mercados globales, colaborar con otras instituciones y reconocer que las decisiones locales tienen conexiones amplias.',
+                    'items' => [
+                        'Movilidad académica y colaboración interinstitucional.',
+                        'Competencias interculturales para negocios y organizaciones.',
+                        'Mirada global aplicada a tecnología, finanzas, mercados y gestión.',
+                    ],
+                ],
+                'pathways' => [
+                    ['title' => 'Movilidad con propósito', 'text' => 'Una estancia académica se aprovecha mejor cuando se vincula con intereses de carrera, idioma, investigación o campo profesional.'],
+                    ['title' => 'Internacionalización en casa', 'text' => 'Clases, proyectos, conferencias y colaboración remota también amplían la perspectiva sin salir del campus.'],
+                    ['title' => 'Perfil competitivo', 'text' => 'El dominio de idiomas, la adaptación cultural y el análisis de entornos globales fortalecen la empleabilidad.'],
+                ],
+            ],
+            'egresados' => [
+                'focus' => [
+                    'eyebrow' => 'Comunidad extendida',
+                    'title' => 'El vínculo con la FCA continúa después del egreso',
+                    'text' => 'Las trayectorias de egresadas y egresados muestran cómo la formación se proyecta en empresas, despachos, instituciones, emprendimientos, consultoría, tecnología, docencia e investigación.',
+                    'items' => [
+                        'Actualización profesional y educación continua.',
+                        'Redes para colaboración, mentoría y oportunidades laborales.',
+                        'Participación en actividades que retroalimentan la vida académica.',
+                    ],
+                ],
+                'pathways' => [
+                    ['title' => 'Aprendizaje permanente', 'text' => 'La actualización mantiene vigente el perfil profesional ante cambios fiscales, tecnológicos, financieros y organizacionales.'],
+                    ['title' => 'Mentoría y red', 'text' => 'La experiencia de egresados puede orientar a estudiantes y fortalecer puentes con el mundo laboral.'],
+                    ['title' => 'Orgullo institucional', 'text' => 'Seguir vinculado permite devolver conocimiento, abrir oportunidades y mantener viva la identidad universitaria.'],
+                ],
+            ],
+        ];
+
+        return $page + ($expanded[$page['route']] ?? []);
+    }
+
+    protected function withExpandedProgram(array $program): array
+    {
+        return $program + [
+            'sourceNote' => 'Malla integrada a partir del plan de estudios oficial publicado por la UADY/FCA.',
+        ];
     }
 
     protected function pages(): array
@@ -445,6 +579,18 @@ class PageController extends Controller
                     'Auditoría, control y gestión financiera',
                     'Prácticas, proyectos integradores y enfoque profesional',
                 ],
+                'sourceUrl' => 'https://apidemoportal.uady.mx/documento/77fc7377a3bf4f31f916af58b57b1721/PE-CP-2019.pdf',
+                'curriculumGrid' => [
+                    ['term' => '1er semestre', 'subjects' => ['Responsabilidad Social Universitaria', 'Valores Socioculturales', 'Economía de los Negocios', 'Fundamentos de Administración', 'Fundamentos de Mercadotecnia', 'Contabilidad Básica', 'Tecnologías y Sistemas de Información']],
+                    ['term' => '2o semestre', 'subjects' => ['Cultura Maya', 'Matemáticas para los Negocios', 'Comportamiento Humano Organizacional', 'Métodos de Investigación', 'Entorno Macroeconómico de los Negocios', 'Proceso Contable']],
+                    ['term' => '3er semestre', 'subjects' => ['Cultura Emprendedora', 'Fundamentos de Costos', 'Estadística Básica para los Negocios', 'Legislación Civil y Mercantil', 'Análisis Económico de los Negocios', 'Contabilidad del Activo']],
+                    ['term' => '4o semestre', 'subjects' => ['Estadística Avanzada para los Negocios', 'Matemáticas Financieras', 'Legislación Laboral', 'Contabilidad de Costos', 'Código Fiscal de la Federación', 'Contabilidad de Pasivo y Capital']],
+                    ['term' => '5o semestre', 'subjects' => ['Introducción a las Finanzas', 'Sistemas de Costos en las Organizaciones', 'Control Interno', 'I.S.R. de las Personas Morales', 'Estados Financieros Básicos']],
+                    ['term' => '6o semestre', 'subjects' => ['Costos para Toma de Decisiones', 'Análisis e Interpretación de Estados Financieros', 'Normatividad de la Auditoría', 'I.S.R. de las Personas Físicas']],
+                    ['term' => '7o semestre', 'subjects' => ['Presupuestos', 'Ética para el Ejercicio Profesional', 'Diversos Impuestos Federales, Estatales y Municipales', 'Administración del Capital de Trabajo', 'Prácticas Profesionales']],
+                    ['term' => '8o semestre', 'subjects' => ['Planeación y Control Financiero', 'Fuentes de Financiamiento', 'Herramientas de Cálculo Gerencial y Financiero', 'Auditoría Interna', 'Optativas']],
+                    ['term' => '9o semestre', 'subjects' => ['Proyectos de Inversión', 'Práctica de la Auditoría', 'Normatividad Contable Avanzada', 'Asignaturas libres', 'Servicio Social']],
+                ],
             ],
             'administracion' => [
                 'slug' => 'administracion',
@@ -478,11 +624,23 @@ class PageController extends Controller
                     'Operacion, calidad, finanzas y mercadotecnia',
                     'Estrategia, emprendimiento y proyectos aplicados',
                 ],
+                'sourceUrl' => 'https://apidemoportal.uady.mx/documento/77fc7377a3bf4f31f916af58b57b1721/PE-LA-2019.pdf',
+                'curriculumGrid' => [
+                    ['term' => '1er semestre', 'subjects' => ['Responsabilidad Social Universitaria', 'Valores Socioculturales', 'Tecnologías y Sistemas de Información', 'Fundamentos de Administración', 'Economía de los Negocios', 'Teoría General de la Administración']],
+                    ['term' => '2o semestre', 'subjects' => ['Cultura Maya', 'Contabilidad Básica', 'Fundamentos de Mercadotecnia', 'Matemáticas para los Negocios', 'Comportamiento Humano Organizacional', 'Empresas Familiares']],
+                    ['term' => '3er semestre', 'subjects' => ['Cultura Emprendedora', 'Métodos de Investigación', 'Estadística Básica para los Negocios', 'Entorno Macroeconómico de los Negocios', 'Fundamentos de Costos', 'Análisis de los Procesos de Negocio']],
+                    ['term' => '4o semestre', 'subjects' => ['Legislación Civil y Mercantil', 'Estadística Avanzada para los Negocios', 'Legislación Laboral', 'Administración de Procesos y Venta', 'Administración de Personal']],
+                    ['term' => '5o semestre', 'subjects' => ['Introducción a las Finanzas', 'Legislación Fiscal', 'Sistemas de Información de la Mercadotecnia', 'Gestión de la Información para la Innovación', 'Estructuración de las Organizaciones']],
+                    ['term' => '6o semestre', 'subjects' => ['Investigación de Operaciones', 'Costos para la Toma de Decisiones', 'Estrategias de Dirección y Liderazgo', 'Administración de la Compensación', 'Estrategias de Mercadotecnia', 'Administración de Operaciones', 'Negocios Internacionales']],
+                    ['term' => '7o semestre', 'subjects' => ['Desarrollo Sustentable', 'Análisis de la Información Financiera', 'Desarrollo de Personal', 'Administración de la Cadena Logística', 'Administración de la Calidad']],
+                    ['term' => '8o semestre', 'subjects' => ['Presupuestos', 'Administración Estratégica', 'Administración de la Mercadotecnia', 'Auditoría Operacional y Administrativa', 'Prácticas Profesionales']],
+                    ['term' => '9o semestre', 'subjects' => ['Proyectos de Inversión', 'Toma de Decisiones Directivas', 'Optativas', 'Asignaturas libres', 'Servicio Social']],
+                ],
             ],
             'mercadotecnia' => [
                 'slug' => 'mercadotecnia',
-                'title' => 'Licenciatura en Mercadotecnia',
-                'shortTitle' => 'Mercadotecnia',
+                'title' => 'Licenciatura en Mercadotecnia y Negocios Internacionales',
+                'shortTitle' => 'Merca y Negocios',
                 'description' => 'Formación centrada en comprender mercados, crear propuestas de valor y diseñar estrategias de comunicación, marca y comercialización basadas en datos.',
                 'image' => 'images/fca/fca-mkt.jpg',
                 'imageAlt' => 'Actividad académica vinculada con mercadotecnia',
@@ -510,6 +668,18 @@ class PageController extends Controller
                     'Investigación, segmentación y estrategia de mercado',
                     'Branding, canales digitales y comercialización',
                     'Analítica, proyectos y desarrollo de campañas',
+                ],
+                'sourceUrl' => 'https://apidemoportal.uady.mx/documento/77fc7377a3bf4f31f916af58b57b1721/PE-LMNI-2019.pdf',
+                'curriculumGrid' => [
+                    ['term' => '1er semestre', 'subjects' => ['Responsabilidad Social Universitaria', 'Valores Socioculturales', 'Tecnologías y Sistemas de Información', 'Contabilidad Básica', 'Introducción a la Investigación de Mercados', 'Probabilidad y Estadística']],
+                    ['term' => '2o semestre', 'subjects' => ['Cultura Maya', 'Economía de los Negocios', 'Fundamentos de Administración', 'Fundamentos de Mercadotecnia', 'Métodos de Investigación', 'Legislación Civil y Mercantil']],
+                    ['term' => '3er semestre', 'subjects' => ['Cultura Emprendedora', 'Entorno Macroeconómico de los Negocios', 'Comportamiento Humano Organizacional', 'Análisis y Medición de los Mercados', 'Desarrollo de Productos', 'Diseño Gráfico']],
+                    ['term' => '4o semestre', 'subjects' => ['Estadística Avanzada para los Negocios', 'Administración y Procesos de Venta', 'Comunicación Integral de la Mercadotecnia', 'Análisis Económico de los Negocios', 'Software para la Investigación de Mercados', 'Desarrollo de Servicios']],
+                    ['term' => '5o semestre', 'subjects' => ['Mercados Internacionales', 'Internacionalización de la Empresa', 'Métodos Cualitativos de Investigación de Mercados', 'Distribución', 'Fijación de Precios', 'Desarrollo de Marcas']],
+                    ['term' => '6o semestre', 'subjects' => ['Investigación de Operaciones', 'Publicidad', 'Promoción de Ventas', 'Relaciones Públicas', 'Métodos Cuantitativos de Investigación de Mercados', 'Gestión del Punto de Venta']],
+                    ['term' => '7o semestre', 'subjects' => ['Desarrollo Sustentable', 'Planeación Estratégica de Mercadotecnia', 'Mercadotecnia Digital 1', 'Administración de Recursos Financieros', 'Prácticas Profesionales']],
+                    ['term' => '8o semestre', 'subjects' => ['Mercadotecnia Digital 2', 'Mercadotecnia Internacional', 'Desarrollo de Modelos de Negocios', 'Optativas', 'Asignaturas libres']],
+                    ['term' => '9o semestre', 'subjects' => ['Métricas de Mercadotecnia', 'Mercadotecnia entre Negocios', 'Seminario de Negocios Internacionales', 'Servicio Social']],
                 ],
             ],
             'lati' => [
@@ -543,6 +713,18 @@ class PageController extends Controller
                     'Sistemas de información, procesos y redes',
                     'Gestión de proyectos, analítica y seguridad',
                     'Innovación digital y soluciones organizacionales',
+                ],
+                'sourceUrl' => 'https://apidemoportal.uady.mx/documento/77fc7377a3bf4f31f916af58b57b1721/LATI-2019.pdf',
+                'curriculumGrid' => [
+                    ['term' => '1er semestre', 'subjects' => ['Responsabilidad Social Universitaria', 'Valores Socioculturales', 'Economía de los Negocios', 'Fundamentos de Administración', 'Tecnologías y Sistemas de Información', 'Matemáticas para los Negocios', 'Lógica Computacional']],
+                    ['term' => '2o semestre', 'subjects' => ['Cultura Maya', 'Fundamentos de Mercadotecnia', 'Contabilidad Básica', 'Interacción Humano Computadora', 'La Sociedad y las Tecnologías de Información']],
+                    ['term' => '3er semestre', 'subjects' => ['Cultura Emprendedora', 'Métodos de Investigación', 'Fundamentos de Costos', 'Probabilidad y Estadística', 'Principios de la Programación Orientada a Objetos']],
+                    ['term' => '4o semestre', 'subjects' => ['Proceso Contable', 'Matemáticas Financieras', 'Análisis de los Procesos del Negocio', 'Programación Orientada a Objetos', 'Redes y Comunicaciones']],
+                    ['term' => '5o semestre', 'subjects' => ['Legislación Fiscal', 'Introducción a las Finanzas', 'Diseño de Bases de Datos', 'Programación para Web', 'Plataformas e Infraestructura Tecnológica']],
+                    ['term' => '6o semestre', 'subjects' => ['Investigación de Operaciones', 'Costos para Toma de Decisiones', 'Legislación Laboral', 'Tecnología Web', 'Diseño e Implementación de Sistemas de Información']],
+                    ['term' => '7o semestre', 'subjects' => ['Administración de la Calidad del Software', 'Administración Financiera', 'Administración de Proyectos de Tecnologías de Información', 'Desarrollo Sustentable', 'Prácticas Profesionales']],
+                    ['term' => '8o semestre', 'subjects' => ['Negocios Electrónicos', 'Gestión de Servicios de Tecnologías de Información', 'Auditoría y Controles de Tecnologías de Información', 'Proyectos de Inversión Tecnológica', 'Optativas']],
+                    ['term' => '9o semestre', 'subjects' => ['Optativas', 'Asignaturas libres', 'Servicio Social']],
                 ],
             ],
         ];
